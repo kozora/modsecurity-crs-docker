@@ -235,7 +235,7 @@ RUN set -eux; \
     ln -sv /opt/owasp-crs /etc/modsecurity.d/; \
     chown nginx:nginx /opt/owasp-crs /etc/modsecurity.d
 
-USER nginx
+USER root
 
 RUN mkdir -p /tmp/modsecurity/data; \
     mkdir -p /tmp/modsecurity/upload; \

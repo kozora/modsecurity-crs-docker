@@ -84,7 +84,7 @@ RUN set -eux; \
     mkdir /opt/owasp-crs; \
     chown nginx:nginx /opt/owasp-crs
 
-USER nginx
+USER root
 
 WORKDIR /sources
 

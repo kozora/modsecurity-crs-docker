@@ -99,8 +99,6 @@ function "vtag" {
 
 group "default" {
     targets = [
-        "apache",
-        "apache-alpine",
         "nginx",
         "nginx-alpine",
         "openresty-alpine-fat"
@@ -123,30 +121,6 @@ target "platforms-base" {
         LUA_VERSION = "${lua-version}"
         LMDB_VERSION = "${lmdb-version}"
     }
-}
-
-target "apache" {
-    inherits = ["platforms-base"]
-    dockerfile="apache/Dockerfile"
-    args = {
-        HTTPD_VERSION = "${httpd-version}"
-        LUA_MODULES = join(" ", lua-modules-debian)
-    }
-    tags = concat(tag("apache"),
-        vtag("${crs-version}", "apache")
-    )
-}
-
-target "apache-alpine" {
-    inherits = ["platforms-base"]
-    dockerfile="apache/Dockerfile-alpine"
-    args = {
-        HTTPD_VERSION = "${httpd-version}"
-        LUA_MODULES = join(" ", lua-modules-alpine)
-    }
-    tags = concat(tag("apache-alpine"),
-        vtag("${crs-version}", "apache-alpine")
-    )
 }
 
 target "nginx" {
